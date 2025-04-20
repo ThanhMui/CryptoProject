@@ -41,7 +41,7 @@ public class TradingLatestBestAggregatedPricingServiceImpl implements TradingLat
                .findFirst()
                .orElse(null);
         if (price== null){
-            return "";
+            return null;
         }
         InfoUser infoUser = userWalletBalanceRepository.findInfoUserByPhoneNumber(phoneNumber);
         TransInfo transInfo = transInfoUserRepository.findTransInfoByPhoneNumberAndType(phoneNumber, requiredCoinType);

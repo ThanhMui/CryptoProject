@@ -112,30 +112,4 @@ public class GetDataFromApi {
         }
     }
 
-    public void test1() {
-        URI uri = null;
-        try {
-            CloseableHttpClient client = HttpClients.createDefault();
-            uri = new URIBuilder()
-                    .setScheme("http")
-                    .setHost("localhost:8080")
-                    .setPath("api/trade")
-
-                    .setParameter("phoneNumber", "0123456")
-                    .setParameter("type", "0123456")
-                    .setParameter("amount", "0123456")
-                    .setParameter("requiredCoinType", "BTCUSDT")
-                    .build();
-            URL url = new URL("http://localhost:8080/api/trade");
-            HttpPost httpPost = new HttpPost(uri);
-
-            CloseableHttpResponse response = client.execute(httpPost);
-
-            System.out.println(EntityUtils.toString(response.getEntity()));
-        } catch (Exception e) {
-            System.out.println(" fail "+ e);
-        }
-
-// execute method and handle any error responses.
-    }
 }

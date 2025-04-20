@@ -34,32 +34,27 @@ public class HandleTradingCryptoSystemController {
 
     @GetMapping("/latest-best-aggregated-price")
     public List<BestPrice> getLatestBestAggregatedPrice() {
-        System.out.println(" get lasted");
         return handleTradingCryptoSystemService.getLatestBestAggregatedPrice();
     }
 
     @PostMapping("/trade")
     public String tradingBasedOnLatestBestAggregatedPrice(@RequestParam(name = "phoneNumber") String phoneNumber, @RequestParam String type, @RequestParam int amount, @RequestParam String requiredCoinType) {
-        System.out.println("tradingBasedOnLatestBestAggregatedPrice");
         return tradingLatestBestAggregatedPricingService.tradingUser(phoneNumber, type, amount, requiredCoinType);
 
     }
 
     @GetMapping("/currencies-wallet-balance")
     public double getCurrenciesWalletBalanceOfUser(@RequestParam String phoneNumber) {
-        System.out.println("getCurrenciesWalletBalanceOfUser");
         return userCurrenciesWalletBalance.getCurrenciesWalletBalanceOfUser(phoneNumber);
     }
 
     @GetMapping("/user-trading-history")
     public List<TradingTransHistory> getUserTradingHistory(@RequestParam String phoneNumber) {
-        System.out.println("getUserTradingHistory");
         return tradingTransactionHistoryService.getUserTradingHistory(phoneNumber);
     }
 
     @PostMapping("/login")
     public void login(@RequestParam(name = "phoneNumber") String phoneNumber) {
-        System.out.println("login");
         userCurrenciesWalletBalance.login(phoneNumber);
     }
 }

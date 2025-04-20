@@ -84,4 +84,18 @@ public class TradingTransHistory {
     public void setTypeCoin(String typeCoin) {
         this.typeCoin = typeCoin;
     }
+
+    @Override
+    public String toString() {
+        return "TradingTransHistory{" +
+                "id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", transType='" + transType + '\'' +
+                ", sourceFrom='" + sourceFrom + '\'' +
+                ", price=" + price +
+                ", amount=" + amount +
+                ", typeCoin='" + typeCoin + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
+    }
 }

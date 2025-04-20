@@ -3,6 +3,7 @@ package com.example.CryptoTradingSystemTest;
 import com.example.CryptoTradingSystemTest.api.GetDataFromApi;
 import com.example.CryptoTradingSystemTest.model.BestPrice;
 import com.example.CryptoTradingSystemTest.model.ModelCommon;
+import com.example.CryptoTradingSystemTest.model.TradingTransHistory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.utils.URIBuilder;
@@ -42,9 +43,6 @@ public class CryptoTradingSystemTestApplication {
 		getDataFromApi.SendPostRequest(uri);
 		String answer = "no";
 
-		Gson gson = new Gson();
-		Type listType = new TypeToken<List<ModelCommon>>() {
-		}.getType();
 		String response = null;
 		while (!answer.equals("yes")){
 			System.out.println("----------------------- OPTION MENU --------------------------");
@@ -85,7 +83,7 @@ public class CryptoTradingSystemTestApplication {
 							 .setParameter("requiredCoinType",coinType )
 							.build();
 				response = getDataFromApi.SendPostRequest(uri);
-					if (response!=null){
+					if (response!=null && !response.isEmpty()){
 						System.out.println(response);
 					}else {
 						System.out.println("Trading something wrong with server");
@@ -115,6 +113,8 @@ public class CryptoTradingSystemTestApplication {
 							.setParameter("phoneNumber",phoneNumber)
 							.build();
 					response = getDataFromApi.GetRequest(uri);
+
+
 					if(response!=null){
 						System.out.println(" Get Trading history user : " + response);
 					}else {
